@@ -3,7 +3,6 @@ with open("input1.txt","r") as inputHandle:
 	Numbers=["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 	numbers=[0,1,2,3,4,5,6,7,8,9]
 	for word in inputHandle:
-		print(word)
 		found={}
 		for i in range(0,10):
 			if Numbers[i] in word:
@@ -14,9 +13,7 @@ with open("input1.txt","r") as inputHandle:
 				for ii in range(0,len(word)):
 					if word.find(str(numbers[i]),ii)>-1:
 						found[word.find(str(numbers[i]),ii)]=i
-		print(found)
 		firstKey=min(found.keys())
 		lastKey=max(found.keys())
-		print(found[firstKey],found[lastKey])
 		axa+=(found[firstKey]*10+found[lastKey])
 print(axa)
