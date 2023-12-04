@@ -41,7 +41,7 @@ int main()
 		int cardCounter=0;
 		char chosen[numbersToChoose]={};
 		int chosenCounter=0;
-		for(counter; counter<game.length(); counter++)
+		for(;counter<static_cast<int>(game.length());counter++)
 		{
 			if(cardCounter<numbersOnCards)
 			{
@@ -58,7 +58,7 @@ int main()
 					cardCounter++;
 				}
 			}
-			if(chosenCounter<24)
+			if(chosenCounter<numbersToChoose)
 			{
 				if(isNumber(game[counter]))
 				{
@@ -75,7 +75,7 @@ int main()
 			}
 		}
 		int matches=0;
-		for(int i=0; i<24; i++)
+		for(int i=0; i<numbersToChoose; i++)
 		{
 			for(int ii=0; ii<numbersOnCards; ii++)
 			{
@@ -87,15 +87,15 @@ int main()
         for(int i=gameNo+1; i<=matches+gameNo; i++)//przypisac ilosc wygranych i przeiterowac do kolejnych kart przez gameno
         {
             cardsObtained[i]+=cardsObtained[gameNo];
-            if(gameNo>200)
-                std::cout<<gameNo+1<<'\t'<<matches<<'\t'<<cardsObtained[gameNo]<<i<<'\n';
+            // if(gameNo>200)
+                std::cout<<gameNo+1<<'\t'<<matches<<'\t'<<cardsObtained[gameNo]<<'\t'<<i<<'\n';
         }
 	}
 
     for(int i=0; i<noOfGames; i++)
     {
         // if(i>200)
-        //     std::cout<<i<<'\t'<<cardsObtained[i]<<'\n';
+            std::cout<<i<<'\t'<<cardsObtained[i]<<'\n';
         result+=cardsObtained[i];
     }
 
