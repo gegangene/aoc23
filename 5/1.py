@@ -20,11 +20,12 @@ with open("input5.txt","r") as fileHandle:
 			for i in range(seedsNo):
 				tabs[currentTab][i]=int(lineList[i])
 		if len(lineList)==3:
-			for ii in range(0,int(lineList[2])):
-				if int(lineList[1])+ii in tabs[currentTab-1].values():
-					tabs[currentTab][int(lineList[1])+ii]=int(lineList[0])+ii
-
-# 	# result.append(checkSeed(tabs,0,i))
+			lineList=list(map(int,lineList))
+			for value in tabs[currentTab-1].values():
+				if value in range(lineList[1],lineList[1]+lineList[2]):
+			# for ii in range(0,int(lineList[2])):
+			# 	if int(lineList[1])+ii in tabs[currentTab-1].values():
+					tabs[currentTab][value]=value+(lineList[0]-lineList[1])
 	
 print(min(tabs[7].values()))
-print(tabs)
+# print(tabs)
