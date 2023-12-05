@@ -1,42 +1,30 @@
-def checkSeed(tabs,tabNo,key):
-	result=0
-	if(tabNo<6):
-		try:
-			key=tabs[tabNo][key]
-		except:
-			pass
-		print(result)
-		result=checkSeed(tabs,tabNo+1,key)
-	return result
-
-
-tabsNo=["seeds","soil","fertilizer","water","light","temperature","humidity","location"]
+tabsNo=["seeds:","-soil","-fertilizer","-water","-light","-temperature","-humidity","-location"]
 currentTab=0
 
 tabs=[]
-seeds=[]
 result=[]
 seedsNo=4
 with open("input5.txt","r") as fileHandle:
 	for line in fileHandle:
 		line=line.strip()
 		for i in range(len(tabsNo)):
-			if line.find(tabsNo[i])>0:
+			if tabsNo[i] in line:
 				tabs.append({})
-				currentTab=i-1
-				print(currentTab)
+				currentTab=i
+				if currentTab>0:
+					for element in tabs[currentTab-1].values():
+						tabs[currentTab][element]=element
+				# print(currentTab)
 		lineList=line.split(" ")
-		if len(lineList)==3:
-			for i in range(int(lineList[2])+1):
-				tabs[currentTab][int(lineList[0])+i]=int(lineList[1])+i
 		if len(lineList)==seedsNo:
-			seeds=list(map(int,lineList))
+			for i in range(seedsNo):
+				tabs[currentTab][i]=int(lineList[i])
+		if len(lineList)==3:
+			for ii in range(0,int(lineList[2])):
+				if int(lineList[1])+ii in tabs[currentTab-1].values():
+					tabs[currentTab][int(lineList[1])+ii]=int(lineList[0])+ii
 
-for i in seeds:
-	result.append(checkSeed(tabs,0,i))
-	print("ugh\n\n")
+# 	# result.append(checkSeed(tabs,0,i))
 	
-	
-# print(min(tabs[6]))
-# print(tabs)
-# print(result)
+print(min(tabs[7].values()))
+print(tabs)
