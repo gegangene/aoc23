@@ -3,7 +3,8 @@ currentTab=0
 
 tabs=[]
 result=[]
-seedsNo=4
+seedsNo=20
+whichSeeds=14
 with open("input5.txt","r") as fileHandle:
 	for line in fileHandle:
 		line=line.strip()
@@ -19,11 +20,12 @@ with open("input5.txt","r") as fileHandle:
 			lineList=list(map(int,line.split(" ")))
 			if len(lineList)==seedsNo:
 				allSeeds=0
-				for element in range(0,seedsNo,2):
+				# for element in range(0,seedsNo,2):
+				element=whichSeeds
 					#allSeeds+=lineList[element+1]
 					# print(lineList[element],lineList[element+1])
-					for i in range(lineList[element],lineList[element]+lineList[element+1]):
-						tabs[0][i]=i
+				for i in range(lineList[element],lineList[element]+lineList[element+1]):
+					tabs[0][i]=i
 				# print(tabs[0])
 				# exit()
 
