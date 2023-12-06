@@ -24,8 +24,8 @@ with open("input5.txt","r") as fileHandle:
 					# print(lineList[element],lineList[element+1])
 					for i in range(lineList[element],lineList[element]+lineList[element+1]):
 						tabs[0][i]=i
-				print(tabs[0])
-				exit()
+				# print(tabs[0])
+				# exit()
 
 			if len(lineList)==3:
 				for value in tabs[currentTab-1].values():
